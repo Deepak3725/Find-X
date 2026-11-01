@@ -14,27 +14,76 @@
 (function () {
   'use strict';
 
-  var toggle = document.querySelector('.nav-toggle');
+  // Highlights the nav tab for the section on screen. On phones the nav is a
+  // bottom tab bar; the sliding indicator follows the active tab.
   var nav = document.querySelector('.site-nav');
+  if (!nav) return;
 
-  if (toggle && nav) {
-    var setNavOpen = function (open) {
-      nav.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
+  var indicator = nav.querySelector('.nav-indicator');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+  var sections = links.map(function (link) {
+    return document.getElementById(link.getAttribute('href').slice(1));
+  });
+  var header = document.querySelector('.site-header');
+  var active = -1;
+  var lockUntil = 0;
+  var ticking = false;
 
-    toggle.addEventListener('click', function () {
-      setNavOpen(!nav.classList.contains('open'));
+  function setActive(index) {
+    if (index === active) return;
+    active = index;
+    links.forEach(function (link, i) {
+      if (i === index) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
     });
+    if (indicator) indicator.style.setProperty('--nav-index', index);
+  }
 
-    nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () { setNavOpen(false); });
+  function sectionInView() {
+    var doc = document.documentElement;
+    if (window.innerHeight + window.pageYOffset >= doc.scrollHeight - 4) {
+      return sections.length - 1;
+    }
+    var line = (header ? header.offsetHeight : 0) + window.innerHeight * 0.35;
+    var index = 0;
+    sections.forEach(function (section, i) {
+      if (section && section.getBoundingClientRect().top <= line) index = i;
     });
+    return index;
+  }
 
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setNavOpen(false);
+  function update() {
+    ticking = false;
+    if (Date.now() < lockUntil) return;
+    setActive(sectionInView());
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', update);
+
+  // Tapping a tab moves the highlight straight away, without flicking
+  // through the sections passed on the way.
+  links.forEach(function (link, i) {
+    link.addEventListener('click', function () {
+      setActive(i);
+      lockUntil = Date.now() + 1200;
+    });
+  });
+
+  if ('onscrollend' in window) {
+    window.addEventListener('scrollend', function () {
+      lockUntil = 0;
+      update();
     });
   }
+
+  update();
 })();
 
 (function () {
@@ -51,10 +100,13 @@
     var target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    var offset = header ? header.offsetHeight : 0;
-    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
     history.replaceState(null, '', '#' + id);
+    // Wait a frame so an open detail panel can close and unlock scrolling.
+    requestAnimationFrame(function () {
+      var offset = header ? header.offsetHeight : 0;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+    });
   });
 })();
 
