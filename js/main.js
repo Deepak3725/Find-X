@@ -1,12 +1,13 @@
 (function () {
   'use strict';
 
+  // If another site loads this page inside a frame, hide it and break out.
   if (window.top !== window.self) {
     document.documentElement.style.display = 'none';
     try {
       window.top.location = window.self.location;
     } catch (e) {
-      document.documentElement.style.display = 'none';
+      // Blocked by the other site: the page simply stays hidden.
     }
   }
 })();
@@ -54,6 +55,7 @@
 
   function update() {
     ticking = false;
+    if (header) header.classList.toggle('is-scrolled', window.pageYOffset > 8);
     if (Date.now() < lockUntil) return;
     setActive(sectionInView());
   }
@@ -106,40 +108,6 @@
       var offset = header ? header.offsetHeight : 0;
       var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
-    });
-  });
-})();
-
-(function () {
-  'use strict';
-
-  var EMAIL = '12250025.gcit@rub.edu.bt';
-  var GMAIL = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(EMAIL);
-  var links = document.querySelectorAll('a[href^="mailto:"]');
-
-  Array.prototype.forEach.call(links, function (link) {
-    link.addEventListener('click', function () {
-      var handled = false;
-
-      var timer = setTimeout(function () {
-        if (!handled && !document.hidden) {
-          window.open(GMAIL, '_blank', 'noopener,noreferrer');
-        }
-      }, 1200);
-
-      function cancel() {
-        handled = true;
-        clearTimeout(timer);
-      }
-
-      window.addEventListener('blur', cancel, { once: true });
-
-      document.addEventListener('visibilitychange', function onVisible() {
-        if (document.hidden) {
-          cancel();
-          document.removeEventListener('visibilitychange', onVisible);
-        }
-      });
     });
   });
 })();
@@ -240,6 +208,57 @@
     render();
     setTimeout(step, delay);
   }
+
+  // Desktop: reserve the height of the tallest phrase at the current width,
+  // so the text below the headline stays still while phrases type.
+  var desktop = window.matchMedia('(min-width: 1024px)');
+  var reserveTimer = null;
+
+  function reserveHeight() {
+    if (!desktop.matches) {
+      h1.style.minHeight = '';
+      return;
+    }
+    var probe = document.createElement('div');
+    probe.className = 'hero-title';
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.position = 'absolute';
+    probe.style.visibility = 'hidden';
+    probe.style.left = '0';
+    probe.style.top = '0';
+    probe.style.minHeight = '0';
+    probe.style.width = h1.clientWidth + 'px';
+
+    var a = document.createElement('span');
+    var b = document.createElement('span');
+    a.className = 'title-line-1';
+    b.className = 'title-line-2';
+    probe.appendChild(a);
+    probe.appendChild(b);
+    h1.parentNode.appendChild(probe);
+
+    var tallest = 0;
+    PHRASES.forEach(function (p) {
+      a.textContent = p[0];
+      b.textContent = p[1];
+      var mark = document.createElement('span');
+      mark.className = 'type-cursor';
+      b.appendChild(mark);
+      tallest = Math.max(tallest, probe.offsetHeight);
+    });
+
+    h1.parentNode.removeChild(probe);
+    h1.style.minHeight = Math.ceil(tallest) + 'px';
+  }
+
+  reserveHeight();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(reserveHeight);
+  }
+  window.addEventListener('resize', function () {
+    clearTimeout(reserveTimer);
+    reserveTimer = setTimeout(reserveHeight, 150);
+  });
 
   render();
   setTimeout(step, START_DELAY);
@@ -442,7 +461,11 @@
     })();
   }
 
-  function show(i) {
+  function show(i, back) {
+    if (i === current) return;
+    // Going back slides the images the other way
+    stage.classList.toggle('is-back', !!back);
+
     if (current >= 0) {
       var prev = slides[current];
       prev.classList.remove('is-active', 'is-live');
@@ -459,13 +482,29 @@
     }, TITLE_DELAY);
   }
 
-  function next() {
+  var autoTimer = null;
+
+  // Restart the auto-advance countdown (after any slide change)
+  function schedule() {
+    clearTimeout(autoTimer);
+    if (!reduce) autoTimer = setTimeout(autoNext, SHOW_MS);
+  }
+
+  function autoNext() {
     if (root.classList.contains('panel-open')) {
-      setTimeout(next, PANEL_CHECK_MS);
+      autoTimer = setTimeout(autoNext, PANEL_CHECK_MS);
       return;
     }
     show((current + 1) % slides.length);
-    setTimeout(next, SHOW_MS);
+    schedule();
+  }
+
+  // Manual navigation: +1 = next, -1 = previous
+  function go(step) {
+    if (root.classList.contains('panel-open')) return;
+    if (!started) start();
+    show((current + step + slides.length) % slides.length, step < 0);
+    schedule();
   }
 
   function start() {
@@ -473,8 +512,49 @@
     started = true;
 
     show(0);
-    if (!reduce) setTimeout(next, SHOW_MS);
+    schedule();
   }
+
+  // Arrow buttons
+  var prevBtn = stage.querySelector('.vision-prev');
+  var nextBtn = stage.querySelector('.vision-next');
+  if (prevBtn) prevBtn.addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
+  if (nextBtn) nextBtn.addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+
+  // Swipe (touch) or drag (mouse): left = next, right = previous
+  var SWIPE_MIN = 40;
+  var startX = null;
+  var startY = 0;
+  var swipedAt = 0;
+
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.target.closest('.vision-arrow')) return;
+    startX = e.clientX;
+    startY = e.clientY;
+  });
+
+  stage.addEventListener('pointerup', function (e) {
+    if (startX === null) return;
+    var dx = e.clientX - startX;
+    var dy = e.clientY - startY;
+    startX = null;
+    if (root.classList.contains('panel-open')) return;
+    if (Math.abs(dx) >= SWIPE_MIN && Math.abs(dx) > Math.abs(dy)) {
+      swipedAt = Date.now();
+      go(dx < 0 ? 1 : -1);
+    }
+  });
+
+  stage.addEventListener('pointercancel', function () { startX = null; });
+
+  // A swipe should not also open the slide's details panel
+  stage.addEventListener('click', function (e) {
+    if (Date.now() - swipedAt < 400) {
+      swipedAt = 0;
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }, true);
 
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries, observer) {

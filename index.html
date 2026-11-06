@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#FFFFFF">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Find X | Find a greener way forward</title>
   <meta name="description" content="Find X helps businesses solve practical problems, market responsibly and make better use of their resources.">
@@ -14,9 +13,6 @@
 <body>
 
   <svg class="sprite" aria-hidden="true" focusable="false">
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-    </symbol>
     <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
     </symbol>
@@ -67,8 +63,8 @@
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
 
-      <a href="mailto:12250025.gcit@rub.edu.bt" class="btn-header" aria-label="Let's Connect by email">
-        <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>
+      <a href="tel:+610411916797" class="btn-header" aria-label="Let's Connect by phone">
+        <img src="assets/icons/phone.svg" alt="" class="icon-sm" width="16" height="16" decoding="async" draggable="false">
         <span class="btn-header-text">Let's Connect</span>
       </a>
 
@@ -88,7 +84,7 @@
             <span class="title-line-2">way forward.</span>
           </h1>
 
-          <p class="lead">We help businesses solve practical problems, </p>
+          <p class="lead">We help businesses solve practical problems,</p>
           <p class="lead">use resources wisely and build a more sustainable future.</p>
 
           <div class="hero-actions">
@@ -103,7 +99,7 @@
         <div class="hero-visual">
           <div class="orbit-stage" id="orbit-stage" aria-hidden="true">
             <canvas class="orbit-canvas" id="orbit-canvas"></canvas>
-            <img src="assets/images/globe.png" alt="" class="orbit-fallback" width="1336" height="1080" decoding="async" draggable="false">
+            <img src="assets/images/globe-fallback.png" alt="" class="orbit-fallback" width="1200" height="684" loading="lazy" decoding="async" draggable="false">
           </div>
         </div>
 
@@ -132,9 +128,9 @@
             <div class="card-detail">
               <p class="detail-lead"><strong>We listen, research and look at the bigger picture.</strong></p>
               <ul>
-                <li>Conversations with the people affected by the problem</li>
-                <li>Research into local context, data and existing solutions</li>
-                <li>A clear view of the root cause, not only the symptoms</li>
+                <li>Conversations with business owners to understand their goals and challenges.</li>
+                <li>Research into business needs, existing practices and opportunities.</li>
+                <li>Identifying key problems and areas where practical improvements can be made.</li>
               </ul>
             </div>
           </article>
@@ -150,9 +146,9 @@
             <div class="card-detail">
               <p class="detail-lead"><strong>We turn ideas into simple, realistic strategies.</strong></p>
               <ul>
-                <li>Options weighed against your budget and resources</li>
-                <li>A practical plan with clear, achievable steps</li>
-                <li>Agreed priorities before any work begins</li>
+                <li>Solutions tailored to each business's needs, goals and resources.</li>
+                <li>Practical marketing, creative advertising and sustainable business strategies.</li>
+                <li>Clear plans and priorities before implementation begins.</li>
               </ul>
             </div>
           </article>
@@ -168,9 +164,9 @@
             <div class="card-detail">
               <p class="detail-lead"><strong>We measure progress, learn and make it better.</strong></p>
               <ul>
-                <li>Simple measures tied to the goals you set</li>
-                <li>Regular check-ins to review what is working</li>
-                <li>Quick adjustments based on real results</li>
+                <li>Track progress against the goals and outcomes agreed upon.</li>
+                <li>Regular check-ins to understand what is working and what needs improvement.</li>
+                <li>Refine strategies based on feedback and real results.</li>
               </ul>
             </div>
           </article>
@@ -184,62 +180,75 @@
 
         <div class="approach-intro">
           <p class="eyebrow">What We Can Help With</p>
-          <p>Areas we plan to work in, with honest, realistic goals.</p>
+          <p>Practical solutions to help businesses grow, improve and promote themselves responsibly</p>
         </div>
 
         <div class="approach-cards">
 
           <article class="approach-card" tabindex="0">
             <div class="card-head">
-              <span class="card-icon"><img src="assets/icons/leaf.svg" alt="" width="22" height="22" decoding="async"></span>
+              <span class="card-icon"><img src="assets/icons/tree.svg" alt="" width="22" height="22" decoding="async"></span>
             </div>
-            <h3 class="card-title">Green Marketing</h3>
-            <p class="card-summary">Help businesses share their values and reach customers responsibly.</p>
+            <h3 class="card-title">Sustainable Growth</h3>
+            <p class="card-summary">We help businesses grow smarter and greener.</p>
 
             <div class="card-detail">
-              <p class="detail-lead"><strong>Help businesses share their values and reach customers responsibly.</strong></p>
+              <p class="detail-lead"><strong>We help businesses grow smarter and greener.</strong></p>
               <ul>
-                <li>Honest messages that match what the business actually does</li>
-                <li>Clear, simple materials for customers and partners</li>
-                <li>Measures that show progress without overclaiming</li>
+                <li>Identify opportunities to improve business practices and support sustainable growth</li>
+                <li>Develop responsible marketing strategies that communicate genuine business values</li>
+                <li>Explore practical ways to use resources more efficiently and reduce unnecessary waste</li>
               </ul>
             </div>
           </article>
 
           <article class="approach-card" tabindex="0">
             <div class="card-head">
-              <span class="card-icon"><img src="assets/icons/settings.svg" alt="" width="22" height="22" decoding="async"></span>
+              <span class="card-icon"><img src="assets/icons/property.svg" alt="" width="22" height="22" decoding="async"></span>
             </div>
-            <h3 class="card-title">Business Resource Planning</h3>
-            <p class="card-summary">Make better use of time, people and resources.</p>
+            <h3 class="card-title">Property &amp; Automotive</h3>
+            <p class="card-summary">We help real estate and automotive businesses grow.</p>
 
             <div class="card-detail">
-              <p class="detail-lead"><strong>Make better use of time, people and resources.</strong></p>
+              <p class="detail-lead"><strong>We help real estate and automotive businesses grow.</strong></p>
               <ul>
-                <li>A review of where time and money are being spent</li>
-                <li>Simple planning tools the team can keep using</li>
-                <li>Less waste and clearer priorities for each season</li>
+                <li>Understand business needs and identify opportunities for improvement</li>
+                <li>Develop practical strategies to promote properties and vehicles</li>
+                <li>Create professional visual content to showcase products and services</li>
               </ul>
             </div>
           </article>
 
           <article class="approach-card" tabindex="0">
             <div class="card-head">
-              <span class="card-icon"><img src="assets/icons/computer.svg" alt="" width="22" height="22" decoding="async"></span>
+              <span class="card-icon"><img src="assets/icons/video.svg" alt="" width="22" height="22" decoding="async"></span>
             </div>
-            <h3 class="card-title">Future Digital Solutions</h3>
-            <p class="card-summary">Explore tools and systems that support sustainable growth.</p>
+            <h3 class="card-title">Creative Solutions</h3>
+            <p class="card-summary">We help small businesses grow through creative solutions.</p>
 
             <div class="card-detail">
-              <p class="detail-lead"><strong>Explore tools and systems that support sustainable growth.</strong></p>
+              <p class="detail-lead"><strong>We help small businesses grow through creative solutions.</strong></p>
               <ul>
-                <li>Practical digital tools matched to your size and budget</li>
-                <li>Guidance on choosing systems you can maintain</li>
-                <li>Training so the team uses them with confidence</li>
+                <li>Create motion graphics and 3D animations for advertising</li>
+                <li>Develop engaging promotional materials for products and services</li>
+                <li>Explore practical digital solutions that support business growth</li>
               </ul>
             </div>
           </article>
 
+        </div>
+
+        <div class="services-cta">
+          <div class="services-cta-text approach-intro">
+            <h2>Have Some Idea?</h2>
+            <p>Tell us what you are working on, and we will help you find a practical next step.</p>
+          </div>
+          <div class="hero-actions">
+            <a href="tel:+610411916797" class="btn btn-primary">
+              Call Us
+              <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -249,49 +258,49 @@
 
         <div class="approach-intro">
           <p class="eyebrow">Our Vision</p>
-          <h2>A Bhutanese vision, built for tomorrow.</h2>
+          <h2>Building smarter businesses for a sustainable future.</h2>
           <p>We bring together Bhutanese design values, responsible business and future technology to create practical, sustainable solutions for a stronger tomorrow.</p>
 
           <div class="vision-cards">
 
             <article class="approach-card vision-mini" tabindex="0">
-              <span class="mini-icon"><img src="assets/icons/heritage.svg" alt="" width="20" height="20" decoding="async"></span>
-              <h3 class="card-title">Bhutanese Values</h3>
+              <span class="mini-icon"><img src="assets/icons/analytics.svg" alt="" width="20" height="20" decoding="async"></span>
+              <h3 class="card-title">Business Performance Intelligence</h3>
 
               <div class="card-detail">
-                <p class="detail-lead"><strong>Rooted in Bhutanese values, built for today.</strong></p>
+                <p class="detail-lead"><strong>Turning business data into meaningful insights.</strong></p>
                 <ul>
-                  <li>Bhutanese design and culture guide our solutions</li>
-                  <li>Practical ideas that suit local businesses</li>
-                  <li>Respect for heritage alongside modern tools</li>
+                  <li>Performance dashboards that present important business indicators</li>
+                  <li>Performance matrices to understand strengths and areas needing attention</li>
+                  <li>Data-driven insights to support informed business decisions</li>
                 </ul>
               </div>
             </article>
 
             <article class="approach-card vision-mini" tabindex="0">
-              <span class="mini-icon"><img src="assets/icons/growth.svg" alt="" width="20" height="20" decoding="async"></span>
-              <h3 class="card-title">Responsible Growth</h3>
+              <span class="mini-icon"><img src="assets/icons/gauge.svg" alt="" width="20" height="20" decoding="async"></span>
+              <h3 class="card-title">Business Optimization</h3>
 
               <div class="card-detail">
-                <p class="detail-lead"><strong>Growth that protects the land and its people.</strong></p>
+                <p class="detail-lead"><strong>Finding inefficiencies and creating opportunities for improvement.</strong></p>
                 <ul>
-                  <li>Efficient use of energy, water and materials</li>
-                  <li>Support for local suppliers and communities</li>
-                  <li>Long-term value measured beyond short-term profit</li>
+                  <li>Identify operational inefficiencies and areas of underperformance</li>
+                  <li>Understand where time, money and resources can be better utilized</li>
+                  <li>Develop practical optimization systems and solutions that improve business performance</li>
                 </ul>
               </div>
             </article>
 
             <article class="approach-card vision-mini" tabindex="0">
-              <span class="mini-icon"><img src="assets/icons/technology.svg" alt="" width="20" height="20" decoding="async"></span>
-              <h3 class="card-title">Future Technology</h3>
+              <span class="mini-icon"><img src="assets/icons/leaf.svg" alt="" width="20" height="20" decoding="async"></span>
+              <h3 class="card-title">Sustainable Business Management</h3>
 
               <div class="card-detail">
-                <p class="detail-lead"><strong>Technology that makes business simpler and faster.</strong></p>
+                <p class="detail-lead"><strong>Making business growth more efficient and sustainable.</strong></p>
                 <ul>
-                  <li>Modern tools chosen to make daily work easier</li>
-                  <li>Digital systems that save time and reduce errors</li>
-                  <li>Solutions designed to grow with your business</li>
+                  <li>Encourage responsible and efficient resource utilization</li>
+                  <li>Integrate sustainable practices into everyday business operations</li>
+                  <li>Support long-term growth through smarter management and continuous improvement</li>
                 </ul>
               </div>
             </article>
@@ -307,16 +316,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">01 · Bhutanese Values</p>
-              <h3 class="vision-title">Rooted in tradition, built for what's next.</h3>
-              <p class="vision-text">We bring Bhutanese design, culture and values into modern, practical solutions for businesses and communities.</p>
+              <p class="vision-kicker">01 · Business Performance Intelligence</p>
+              <h3 class="vision-title">See the bigger picture.</h3>
+              <p class="vision-text">We envision intelligent performance dashboards that bring important business information together, helping businesses understand their current position and make informed decisions.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Rooted in tradition, built for what's next.</strong></p>
+              <p class="detail-lead"><strong>Making business performance easier to understand.</strong></p>
               <ul>
-                <li>Bhutanese design and culture guide every solution we build</li>
-                <li>Practical ideas that suit businesses and communities today</li>
-                <li>Respect for heritage alongside modern tools</li>
+                <li>Centralized dashboards presenting key business performance indicators</li>
+                <li>Clear performance matrices to track progress against business goals</li>
+                <li>Meaningful insights that help business owners make informed decisions</li>
               </ul>
             </div>
           </article>
@@ -327,16 +336,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">02 · Responsible Growth</p>
-              <h3 class="vision-title">Growth that gives back.</h3>
-              <p class="vision-text">We help businesses grow in ways that respect the environment, support local communities and create long-term value.</p>
+              <p class="vision-kicker">02 · Business Optimization</p>
+              <h3 class="vision-title">Find inefficiencies. Unlock potential.</h3>
+              <p class="vision-text">We aim to help businesses identify where they are losing time, money and resources, turning those findings into practical opportunities for improvement.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Growth that gives back.</strong></p>
+              <p class="detail-lead"><strong>Understanding what holds a business back and how to improve it.</strong></p>
               <ul>
-                <li>Growth plans that protect the environment and local land</li>
-                <li>Support for local suppliers and community projects</li>
-                <li>Long-term value measured beyond short-term profit</li>
+                <li>Identify operational inefficiencies and areas of underperformance</li>
+                <li>Analyze business processes to understand where improvements are needed</li>
+                <li>Develop practical optimization systems to improve efficiency and performance</li>
               </ul>
             </div>
           </article>
@@ -347,16 +356,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">02 · Responsible Growth</p>
-              <h3 class="vision-title">Smarter use. A healthier tomorrow.</h3>
-              <p class="vision-text">We promote efficient resource use, cleaner practices and responsible business models for a more sustainable future.</p>
+              <p class="vision-kicker">03 · Sustainable Business Management</p>
+              <h3 class="vision-title">Smarter operations. Sustainable growth.</h3>
+              <p class="vision-text">We want to help businesses balance performance with responsible resource management, building efficient operations that support long-term sustainable growth.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Smarter use. A healthier tomorrow.</strong></p>
+              <p class="detail-lead"><strong>Building businesses that grow responsibly and efficiently.</strong></p>
               <ul>
-                <li>Efficient use of energy, water and materials</li>
-                <li>Cleaner practices that reduce waste at the source</li>
-                <li>Business models built to last for future generations</li>
+                <li>Encourage efficient use of energy, materials, time and other resources</li>
+                <li>Identify opportunities to reduce unnecessary costs and waste</li>
+                <li>Support sustainable business practices that create long-term value</li>
               </ul>
             </div>
           </article>
@@ -367,16 +376,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">03 · Future Technology</p>
-              <h3 class="vision-title">Technology for real solutions.</h3>
-              <p class="vision-text">We use modern tools and digital systems to make business simpler, faster and more effective, today and for the future.</p>
+              <p class="vision-kicker">01 · Business Performance Intelligence</p>
+              <h3 class="vision-title">From data to better decisions.</h3>
+              <p class="vision-text">We see data as more than numbers. Our vision is to turn business information into useful insights that reveal performance trends and guide better decisions.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Technology for real solutions.</strong></p>
+              <p class="detail-lead"><strong>Helping businesses understand what their data is telling them.</strong></p>
               <ul>
-                <li>Modern tools chosen to make daily work simpler</li>
-                <li>Digital systems that save time and reduce errors</li>
-                <li>Solutions designed to grow with the business</li>
+                <li>Bring relevant business information together for clearer analysis</li>
+                <li>Track important indicators and compare performance over time</li>
+                <li>Use data-driven insights to identify opportunities and guide future planning</li>
               </ul>
             </div>
           </article>
@@ -387,16 +396,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">01 · Bhutanese Values</p>
-              <h3 class="vision-title">Supporting local, preserving heritage.</h3>
-              <p class="vision-text">We value local talent, traditional craftsmanship and Bhutanese identity, helping them find new opportunities in a changing world.</p>
+              <p class="vision-kicker">02 · Business Optimization</p>
+              <h3 class="vision-title">Better systems. Better performance.</h3>
+              <p class="vision-text">We aim to develop practical business systems that simplify operations, improve resource utilization and help businesses work more effectively.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Supporting local, preserving heritage.</strong></p>
+              <p class="detail-lead"><strong>Turning identified problems into practical improvements.</strong></p>
               <ul>
-                <li>Local talent and craftsmanship at the centre of our work</li>
-                <li>New opportunities for artisans and small businesses</li>
-                <li>Traditional identity kept alive in a changing world</li>
+                <li>Understand operational challenges and recurring inefficiencies</li>
+                <li>Improve workflows and make better use of available resources</li>
+                <li>Develop scalable solutions that adapt to changing business needs</li>
               </ul>
             </div>
           </article>
@@ -407,16 +416,16 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">02 · Responsible Growth</p>
-              <h3 class="vision-title">Smarter use. A healthier tomorrow.</h3>
-              <p class="vision-text">We promote efficient resource use, cleaner practices and responsible business models for a more sustainable future.</p>
+              <p class="vision-kicker">03 · Sustainable Business Management</p>
+              <h3 class="vision-title">Efficiency today. A sustainable tomorrow.</h3>
+              <p class="vision-text">We envision businesses that make responsible decisions, reduce unnecessary resource consumption and build sustainable practices into their operations.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Smarter use. A healthier tomorrow.</strong></p>
+              <p class="detail-lead"><strong>Making sustainability part of everyday business decisions.</strong></p>
               <ul>
-                <li>Efficient use of energy, water and materials</li>
-                <li>Cleaner practices that reduce waste at the source</li>
-                <li>Business models built to last for future generations</li>
+                <li>Promote responsible resource utilization across business operations</li>
+                <li>Identify opportunities to minimize waste and improve efficiency</li>
+                <li>Build long-term business value through sustainable management practices</li>
               </ul>
             </div>
           </article>
@@ -427,19 +436,26 @@
             </div>
             <div class="vision-shade" aria-hidden="true"></div>
             <div class="vision-caption">
-              <p class="vision-kicker">03 · Future Technology</p>
-              <h3 class="vision-title">Connecting people, ideas and opportunities.</h3>
-              <p class="vision-text">Through innovative digital solutions, we help businesses reach further, work smarter and build a more connected future.</p>
+              <p class="vision-kicker">04 · Our Future Platform</p>
+              <h3 class="vision-title">One platform. A clearer picture of your business.</h3>
+              <p class="vision-text">We envision an intelligent business platform that brings business operations, performance insights and management tools together, helping businesses understand their position and identify opportunities for improvement.</p>
             </div>
             <div class="card-detail">
-              <p class="detail-lead"><strong>Connecting people, ideas and opportunities.</strong></p>
+              <p class="detail-lead"><strong>Building an intelligent platform for complete business management.</strong></p>
               <ul>
-                <li>Digital tools that connect local businesses to wider markets</li>
-                <li>A simple online presence for small enterprises</li>
-                <li>Partnerships that open new opportunities</li>
+                <li>Bring essential business operations and performance information together in one place</li>
+                <li>Monitor key indicators through clear dashboards and performance matrices</li>
+                <li>Identify inefficiencies and turn business insights into actionable improvements</li>
               </ul>
             </div>
           </article>
+
+          <button type="button" class="vision-arrow vision-prev" aria-label="Previous image">
+            <img src="assets/icons/left.svg" alt="" width="28" height="28" decoding="async" draggable="false">
+          </button>
+          <button type="button" class="vision-arrow vision-next" aria-label="Next image">
+            <img src="assets/icons/right.svg" alt="" width="28" height="28" decoding="async" draggable="false">
+          </button>
 
         </div>
       </div>
@@ -450,16 +466,15 @@
 
         <div class="approach-intro">
           <p class="eyebrow">Get in Touch</p>
-          <h2>Have Some Idea?</h2>
-          <p>Tell us what you are working on, and we will help you find a practical next step.</p>
+          <h2>Any Inquiries?</h2>
+          <p>Have a question about our work or services? Reach out and we will get back to you.</p>
         </div>
 
         <div class="hero-actions">
-          <a href="mailto:12250025.gcit@rub.edu.bt" class="btn btn-primary">
-            Email Us
+          <a href="tel:+610411916797" class="btn btn-primary">
+            Call Us
             <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
           </a>
-          <a href="tel:+61401241657" class="btn btn-outline">Call Us</a>
         </div>
 
       </div>
@@ -504,37 +519,12 @@
         <h3 class="footer-heading">Get in Touch</h3>
         <ul class="footer-contact">
           <li>
-            <img src="assets/icons/email.svg" alt="" width="24" height="24" decoding="async" draggable="false">
-            <a href="mailto:12250025.gcit@rub.edu.bt">12250025.gcit@rub.edu.bt</a>
-          </li>
-          <li>
             <img src="assets/icons/phone.svg" alt="" width="24" height="24" decoding="async" draggable="false">
-            <a href="tel:+61401241657">+61 401 241 657</a>
+            <a href="tel:+610411916797">+61 0411 916 797</a>
           </li>
           <li>
             <img src="assets/icons/location.svg" alt="" width="24" height="24" decoding="async" draggable="false">
             <a href="https://www.google.com/maps/search/?api=1&amp;query=Perth+Western+Australia" target="_blank" rel="noopener noreferrer">Perth, Australia</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3 class="footer-heading">Follow Us</h3>
-        <ul class="footer-social" aria-label="Social links">
-          <li>
-            <a href="https://www.facebook.com/zen.senergy/" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-              <img src="assets/icons/facebook.svg" alt="" width="22" height="22" decoding="async" draggable="false">
-            </a>
-          </li>
-          <li>
-            <a href="https://wa.me/61401241657" class="footer-social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
-              <img src="assets/icons/whatsapp.svg" alt="" width="22" height="22" decoding="async" draggable="false">
-            </a>
-          </li>
-          <li>
-            <a href="https://t.me/your_username" class="footer-social-link" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
-              <img src="assets/icons/telegram.svg" alt="" width="22" height="22" decoding="async" draggable="false">
-            </a>
           </li>
         </ul>
       </div>

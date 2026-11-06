@@ -1,0 +1,4 @@
+# Netlify: publish only the website files (security headers are in _headers).
+[build]
+  command = "sh build.sh"
+  publish = "dist"
